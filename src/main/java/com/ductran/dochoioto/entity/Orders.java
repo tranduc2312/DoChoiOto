@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.ductran.dochoioto.model.OrderModel;
 
 @Entity
 @Table(name = "orders")
@@ -22,6 +25,7 @@ public class Orders {
 	@Column(name = "order_Cost")
 	private float orderCost;
 	@Column(name = "order_Date")
+	@CreationTimestamp
 	private Timestamp orderDate;
 	@Column(name = "order_Status")
 	private boolean orderStatus;
@@ -35,7 +39,14 @@ public class Orders {
 	private List<OrderDetails> listOrderDetails;
 	
 	public Orders() {}
-	
+	public Orders(OrderModel order) {
+		this.orderId = order.getOrderId();
+		this.orderCost = order.getOrderCost();
+		this.orderDate = order.getOrderDate();
+		this.orderStatus = order.isOrderStatus();
+		this.orderConfirm = order.isOrderConfirm();
+		this.customers = new Customers(order.getCustomers());
+	}
 	public Orders(String orderId, float orderCose, Timestamp orderDate, boolean orderStatus) {
 		super();
 		this.orderId = orderId;

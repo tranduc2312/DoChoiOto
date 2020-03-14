@@ -25,6 +25,8 @@ public class Categories {
 	private String categoryName;
 	@Column(name = "category_Status")
 	private boolean categoryStatus;
+	@Column(name = "category_ParentId")
+	private String categoryParentId;
 	@JoinColumn(name = "category_ParentId")
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Categories> listChildCategory;
@@ -33,19 +35,27 @@ public class Categories {
 		
 	public Categories() {}
 	public Categories(CategoriesModel category) {
+		this.categoryParentId = category.getCategoryParentId();
 		this.categoryId = category.getCategoryId();
 		this.categoryCode = category.getCategoryCode();
 		this.categoryName = category.getCategoryName();
 		this.categoryStatus = category.isCategoryStatus();
 	}
-	public Categories(String categoryId, String categoryCode, String categoryName, boolean status) {
+	public Categories(String categoryId,String parentId, String categoryCode, String categoryName, boolean status) {
 		super();
+		this.categoryParentId = parentId;
 		this.categoryId = categoryId;
 		this.categoryCode = categoryCode;
 		this.categoryName = categoryName;
 		this.categoryStatus = status;
 	}
 	
+	public String getCategoryParentId() {
+		return categoryParentId;
+	}
+	public void setCategoryParentId(String categoryParentId) {
+		this.categoryParentId = categoryParentId;
+	}
 	public List<Products> getListProducts() {
 		return listProducts;
 	}

@@ -8,6 +8,10 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class OrderDetailID implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column(name = "order_Id")
 	private String orderId;
 	@Column(name = "product_Id")

@@ -3,10 +3,11 @@ package com.ductran.dochoioto.entity;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.ductran.dochoioto.model.OrderDetailModel;
 
 @Entity
 @Table(name = "order_details")
@@ -32,6 +33,14 @@ public class OrderDetails {
 	private Orders order;
 	
 	public OrderDetails() {}
+	public OrderDetails(OrderDetailModel model) {
+		OrderDetailID id = new OrderDetailID(model.getOrderId(), model.getProductId());
+		this.orderDetailId = id;
+		this.productAmount = model.getProductAmount();
+		this.orderDStatus = model.isOrderDStatus();
+		//this.product = new Products(model.getProduct());
+		//this.order = new Orders(model.getOrder());
+	}
 	public OrderDetails(OrderDetailID id, int productAmount, boolean orderDStatus) {
 		super();
 		this.orderDetailId = id;

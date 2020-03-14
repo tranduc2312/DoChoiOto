@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong><i class="icon fa fa-plane"></i> BRILLIANT</strong></a>
+                <a class="navbar-brand" href="index.html"><strong><i class="icon fa fa-plane"></i> ADMIN</strong></a>
 				<div id="sideNav" href="">
 		<i class="fa fa-bars icon"></i> 
 		</div>
@@ -230,24 +230,17 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li>
-                        <a href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
-                    </li>
-					 
-					 <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+					<li>
+                        <a href="#" id="products"><i class="fa fa-desktop"></i> Product Management<span class="fa arrow"></span></a>
+                   		<ul class="nav nav-second-level">
                             <li>
-                                <a href="chart.html">Charts JS</a>
+                                <a href="<c:url value='/admin/products'/>">List Products</a>
                             </li>
                             <li>
-                                <a href="morris-chart.html">Morris Chart</a>
+                                <a href="<c:url value='/admin/products?op=add'/>">Add Product</a>
                             </li>
-							</ul>
-						</li>	
+                        </ul>
+                    </li>
                     <li>
                         <a href="#" id="categories"><i class="fa fa-qrcode"></i> Category Management<span class="fa arrow"></span></a>
                    		<ul class="nav nav-second-level">
@@ -270,40 +263,27 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
-                    </li>
-
-
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
+                     <li>
+                        <a href="#" id="images"><i class="fa fa-sitemap"></i> Images Management<span class="fa arrow"></span></a>
+                   		<ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Second Level Link</a>
+                                <a href="<c:url value='/admin/images'/>">List Images</a>
                             </li>
                             <li>
-                                <a href="#">Second Level Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Link</a>
-                                    </li>
-
-                                </ul>
-
+                                <a href="<c:url value='/admin/images?op=add'/>">Add Image</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+					<li>
+                        <a href="#" id="orders"><i class="fa fa-edit"></i> Orders Management<span class="fa arrow"></span></a>
+                   		<ul class="nav nav-second-level">
+                            <li>
+                                <a href="<c:url value='/admin/orders?op=unconfirmed'/>">UnConfirmed Orders</a>
+                            </li>
+                            <li>
+                                <a href="<c:url value='/admin/orders?op=confirmfed'/>">Confirmed Orders</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
 

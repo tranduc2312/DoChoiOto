@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ductran.dochoioto.entity.Images;
+import com.ductran.dochoioto.entity.Products;
 import com.ductran.dochoioto.model.ImageModel;
 import com.ductran.dochoioto.repository.ImageRepository;
 
@@ -26,9 +27,15 @@ public class ImageServiceImpl extends GenericService implements ImageService{
 	}
 
 	@Override
-	public List<ImageModel> findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ImageModel> findById(String id, int limit) {
+		List<Images> listImages = dao.findById(id, limit);
+		List<ImageModel> listModel = new ArrayList<ImageModel>();
+			for (Images image : listImages) {
+				ImageModel model = new ImageModel(image);
+				listModel.add(model);
+			}
+		
+		return listModel;
 	}
 
 	@Override
@@ -40,6 +47,7 @@ public class ImageServiceImpl extends GenericService implements ImageService{
 	@Override
 	public boolean add(ImageModel obj) {
 		Images image = new Images(obj);
+		image.setProduct(new Products(obj.getProduct().getProductId()));
 		image.setImageStatus(true);
 		return dao.add(image);
 	}

@@ -39,6 +39,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="inputCategoryParent" class="col-sm-2 control-label">Category Parent</label>
+                                            <div class="col-sm-5">
+                                            	<select name="categoryParentId" class="form-control">
+                                            		<c:forEach var="list" items="${listCategory }">
+                                            			<option value="${list.categoryId }">${list.categoryName }</option>
+                                            		</c:forEach>
+                                            	</select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="inputCategoryName" class="col-sm-2 control-label">Category Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="categoryName" id="inputCategoryName" value="${category.categoryName }" placeholder="CategoryName">
@@ -57,7 +67,7 @@
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
                                                 <input type="button" onclick="checkValidate()" class="btn btn-default" value="Edit">
-                                                <input type="button" class="btn btn-default" onclick="window.history.back();" value="Cancel">
+                                                <input type="button" class="btn btn-default"  onclick="show('','','Do you want to cancel this?','Confirm')" value="Cancel">
                                             </div>
                                         </div>
                                     </form:form>
@@ -71,11 +81,9 @@
         <script type="text/javascript">
         	var status = '${category.categoryStatus}';
         	var inputStatus = document.forms["formCategory"]["categoryStatus"];
-        	if(status == 'true'){
-        		inputStatus.selectedIndex = 0;
-        	}else{
-        		inputStatus.selectedIndex = 1;	
-        	}
+        	setIndexCombobox(status,inputStatus);
+        	var parentId = '${category.categoryParentId}';
+        	var inputSelect = document.forms[0]["categoryParentId"];
         //
          	var form = document.forms[0];
          	function checkValidate(){

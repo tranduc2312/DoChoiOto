@@ -18,7 +18,7 @@ public class Images {
 	private String imageId;
 	@Column(name = "image_Url")
 	private String imageUrl;
-	@Column(name = "image_title")
+	@Column(name = "image_Title")
 	private String imageTitle;
 	@Column(name = "image_isBanner")
 	private boolean isBanner;
@@ -38,6 +38,7 @@ public class Images {
 		this.isBanner = image.isBanner();
 		this.isPrimary = image.isPrimary();
 		this.imageStatus = image.isImageStatus();
+//		this.product = new Products(image.getProduct());
 	}
 	public Images(String imageId, String imageUrl, boolean isBanner, boolean isPrimary, boolean imageStatus) {
 		super();

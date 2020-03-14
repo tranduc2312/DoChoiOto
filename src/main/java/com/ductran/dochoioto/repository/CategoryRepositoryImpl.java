@@ -26,7 +26,7 @@ public class CategoryRepositoryImpl implements CategoryRepository{
 	}
 
 	@Override
-	public List<Categories> findById(String id) {
+	public List<Categories> findById(String id, int limit) {
 		// TODO Auto-generated method stub
 		return null;
 	}

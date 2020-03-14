@@ -26,9 +26,14 @@ public class ProductServiceImpl extends GenericService implements ProductService
 	}
 
 	@Override
-	public List<ProductModel> findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductModel> findById(String id, int limit) {
+		List<Products> listProduct = dao.findById(id,limit);
+		List<ProductModel> listModel = new ArrayList<ProductModel>();
+		for (Products products : listProduct) {
+			ProductModel model = new ProductModel(products);
+			listModel.add(model);
+		}
+		return listModel;
 	}
 
 	@Override
@@ -57,7 +62,37 @@ public class ProductServiceImpl extends GenericService implements ProductService
 
 	@Override
 	public String autoID() {
+		System.out.println(setID(dao.autoId()));
 		return setID(dao.autoId());
+	}
+
+	@Override
+	public List<ProductModel> findAllByCode(String code,int startPosition,int maxResult) {
+		List<Products> listProduct = dao.findAllByCode(code,startPosition,maxResult);
+		List<ProductModel> listModel = new ArrayList<ProductModel>();
+		for (Products products : listProduct) {
+			ProductModel model = new ProductModel(products);
+			listModel.add(model);
+		}
+		return listModel;
+	}
+
+	@Override
+	public ProductModel findOneByCode(String code) {
+		ProductModel model = new ProductModel(dao.findOneByCode(code));
+		return model;
+	}
+
+	@Override
+	public List<ProductModel> findAllById(String id, int maxResult) {
+		List<Object> listProduct = dao.findAllById(id, maxResult);
+		List<ProductModel> listModel = new ArrayList<ProductModel>();
+		for (Object obj : listProduct) {
+			
+			ProductModel model = new ProductModel();
+			listModel.add(model);
+		}
+		return listModel;
 	}
 	
 

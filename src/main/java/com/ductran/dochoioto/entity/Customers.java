@@ -3,9 +3,10 @@ package com.ductran.dochoioto.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.ductran.dochoioto.model.CustomerModel;
 
 @Entity
 @Table(name = "customers")
@@ -31,6 +32,15 @@ public class Customers {
 	
 	
 	public Customers() {}
+	public Customers(CustomerModel ctm) {
+		this.ctmId = ctm.getCtmId();
+		this.ctmFullName = ctm.getCtmFullName();
+		this.ctmEmail = ctm.getCtmEmail();
+		this.ctmPhone = ctm.getCtmPhone();
+		this.ctmAddress = ctm.getCtmAddress();
+		this.ctmNotes = ctm.getCtmNotes();
+		this.ctmStatus = ctm.isCtmStatus();
+	}
 	public Customers(String ctmId, String ctmFullName, String ctmEmail, String ctmPhone, String ctmAddress,
 			String ctmNotes, boolean ctmStatus) {
 		super();

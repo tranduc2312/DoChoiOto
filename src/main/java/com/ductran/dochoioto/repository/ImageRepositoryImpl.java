@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ductran.dochoioto.entity.Images;
-import com.ductran.dochoioto.entity.Products;
 @Repository
 @Transactional
 public class ImageRepositoryImpl implements ImageRepository {
@@ -25,9 +24,13 @@ public class ImageRepositoryImpl implements ImageRepository {
 	}
 
 	@Override
-	public List<Images> findById(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Images> findById(String id, int limit) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("From Images Where product.productId = :id ");
+		query.setParameter("id", id);
+		query.setMaxResults(limit);
+		List<Images> list = query.getResultList();
+		return list;
 	}
 
 	@Override

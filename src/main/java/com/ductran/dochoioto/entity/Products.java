@@ -30,7 +30,7 @@ public class Products {
 	private float productPrice;
 	@Column(name = "product_Status")
 	private boolean productStatus;
-	@JoinColumn(name = "cateogry_Id")
+	@JoinColumn(name = "category_Id")
 	@ManyToOne
 	private Categories category;
 	@JoinColumn(name = "product_Id")
@@ -45,6 +45,9 @@ public class Products {
 	
 	public Products() {}
 	
+	public Products(String id) {
+		this.productId = id;
+	}
 	public Products(ProductModel product) {
 		this.productId = product.getProductId();
 		this.productCode = product.getProductCode();
@@ -52,6 +55,7 @@ public class Products {
 		this.productInfo = product.getProductInfo();
 		this.productPrice = product.getProductPrice();
 		this.productStatus = product.isProductStatus();
+		this.category = new Categories(product.getCategory());
 	}
 	
 	public Products(String productId, String productCode, String productName, String productInfo, float productPrice,

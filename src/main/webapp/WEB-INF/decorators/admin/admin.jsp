@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Admin - List User</title>
 	<!-- Bootstrap Styles-->
     <link href="<c:url value="/resources/assets/css/bootstrap.css"/>" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -56,20 +55,7 @@
 <body>
 	<jsp:include page="header.jsp"/>
 	
-	
-	<!--
-	<hr>
-	 <div class="left" style="float:left;  width:300px; height:1000px; background-color: grey;">
-	<div class="body" style="margin-top:50px;">
-	<div class="content">
-	</div>
-	<hr>
-	</div>
-	</div> -->
-	
 	<dec:body/>
-	
-
 	
 	<%-- <jsp:include page="footer.jsp"/> --%>
 	
@@ -88,7 +74,7 @@
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
-    </script>
+    	</script>
          <!-- Custom Js -->
    	<script src="<c:url value="/resources/assets/js/custom-scripts.js"/>"></script>
     <script src="<c:url value="/resources/assets/js/admin-custom.js"/>"></script>

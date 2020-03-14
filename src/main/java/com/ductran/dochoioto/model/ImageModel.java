@@ -1,7 +1,6 @@
 package com.ductran.dochoioto.model;
 
 import com.ductran.dochoioto.entity.Images;
-import com.ductran.dochoioto.entity.Products;
 
 public class ImageModel {
 	private String imageId;
@@ -10,7 +9,7 @@ public class ImageModel {
 	private boolean isBanner;
 	private boolean isPrimary;
 	private boolean imageStatus;
-	private Products product;
+	private ProductModel product;
 	public ImageModel() {}
 	public ImageModel(Images image) {
 		this.imageId = image.getImageId();
@@ -19,6 +18,7 @@ public class ImageModel {
 		this.isBanner = image.isBanner();
 		this.isPrimary = image.isPrimary();
 		this.imageStatus = image.isImageStatus();
+		this.product = new ProductModel(image.getProduct());
 	}
 	public ImageModel(String imageId, String imageUrl, String imageTitle, boolean isBanner, boolean isPrimary,
 			boolean imageStatus) {
@@ -66,10 +66,10 @@ public class ImageModel {
 	public void setImageStatus(boolean imageStatus) {
 		this.imageStatus = imageStatus;
 	}
-	public Products getProduct() {
+	public ProductModel getProduct() {
 		return product;
 	}
-	public void setProduct(Products product) {
+	public void setProduct(ProductModel product) {
 		this.product = product;
 	}
 	

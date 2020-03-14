@@ -29,7 +29,7 @@
 						<ol class="breadcrumb">
 					  <li><a href="#">Admin</a></li>
 					  <li><a href="#">Categories</a></li>
-					  <li class="active">Edit Category</li>
+					  <li class="active">Add Category</li>
 					</ol> 
 									
 		</div>
@@ -52,6 +52,16 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label for="inputCategoryParent" class="col-sm-2 control-label">Category Parent</label>
+                                            <div class="col-sm-10">
+                                            	<select name="categoryParentId" class="form-control">
+                                            		<c:forEach var="list" items="${listCategory }">
+                                            			<option value="${list.categoryId }">${list.categoryName }</option>
+                                            		</c:forEach>
+                                            	</select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label for="inputCategoryName" class="col-sm-2 control-label">Category Name</label>
                                             <div class="col-sm-10">
                                                 <input type="text" class="form-control" name="categoryName" id="inputCategoryName" placeholder="CategoryName">
@@ -71,21 +81,19 @@
                         </div>
                     </div>
               </div>
-              <jsp:include page="popup.jsp" />
               <c:forEach var="list" items="${listCategory }">
-              	<input type="hidden" value="${list.categoryId }" class="listCategoryId"/>
-              	<input type="hidden" value="${list.categoryName }" class="listCategoryName" />
-              </c:forEach>
-         <script type="text/javascript">
+            			<input type="hidden" value="${list.categoryId }" class="listCategoryId"/>
+           				<input type="hidden" value="${list.categoryName }" class="listCategoryName" />
+         		</c:forEach>
+              <jsp:include page="popup.jsp" />
+	         <script type="text/javascript">
          	var listCategoryId = document.getElementsByClassName("listCategoryId");
          	var listCategoryName = document.getElementsByClassName("listCategoryName");
          	var form = document.forms["formCategory"];
          	function checkValidate(){
          		if(checkUnique("categoryId",listCategoryId))
          		{
-         			
      			}else if(checkLength("categoryName",100,0)){
-     				
      			}else{
      				var categoryName = document.forms[0]["categoryName"].value;
      				document.getElementById("inputCategoryCode").value = convertToNonUnicode(categoryName);

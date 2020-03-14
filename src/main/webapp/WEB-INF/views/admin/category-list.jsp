@@ -48,7 +48,7 @@
                                             <td><a href="<c:url value="/admin/categories?op=edit&id=${list.categoryId }"/>"><c:out value="${list.categoryId }"/></a></td>
                                             <td><c:out value="${list.categoryName }"/></td>
                                             <td><c:out value="${list.categoryStatus }"/></td>
-											<td><a onclick="show('${list.categoryId }','${list.categoryName }','Do you want to delete this?','Confirm')" ><i class="fas fa-trash"></i></a></td>
+											<td><a onclick="show('${list.categoryId }','${list.categoryName }','Do you want to delete this category?','Confirm')" ><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                      </c:forEach>  
                                     </tbody>
@@ -64,10 +64,7 @@
            </div>
        <jsp:include page="popup.jsp"/>
        <script type="text/javascript">
-	       function execute(){
-	    	   var id = document.getElementById("idHidden").value;
-	    		window.location.href = "categories?op=del&id="+id;
-	       }
+	      
        </script>
 </body>
 </html>

@@ -22,3 +22,12 @@
             </div>
         </div>
     </div>
+    <script>
+    function setIndexCombobox(status,inputStatus){
+    	if(status == 'true'){
+    		inputStatus.selectedIndex = 0;
+    	}else{
+    		inputStatus.selectedIndex = 1;	
+    	}
+    }
+    </script>

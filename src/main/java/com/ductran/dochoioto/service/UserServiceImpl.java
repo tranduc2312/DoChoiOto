@@ -27,7 +27,7 @@ public class UserServiceImpl extends GenericService implements UserService {
 	}
 
 	@Override
-	public List<UserModel> findById(String id) {
+	public List<UserModel> findById(String id, int limit) {
 		// TODO Auto-generated method stub
 		return null;
 	}

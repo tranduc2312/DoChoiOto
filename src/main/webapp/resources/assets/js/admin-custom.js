@@ -1,6 +1,23 @@
 function back(){
 	window.history.back();
 }
+function execute(type){
+	
+	if(type == 'cancel'){
+		back();
+	}else {
+		var id = document.getElementById("idHidden").value;
+		var size = type.length;
+		var text = '';
+		var isY = type.substring(size-2,size-1);
+		if(isY == 'y'){
+			text = type.substring(0,size-2)+'ies';
+		}else{
+			text = type.substring(0,size-1);
+		}
+		window.location.href = text+"?op=del&id="+id;
+	}
+}
 function convertToNonUnicode(str) {
 	  var result = str.toString();
 
@@ -18,7 +35,7 @@ function convertToNonUnicode(str) {
 	  result = result.replace(/(\u00f9|\u00fa|\u0169|\u01b0|\u1ee5|\u1ee7|\u1ee9|\u1eeb|\u1eed|\u1eef|\u1ef1)/g, 'u');
 	  result = result.replace(/(\u00dd|\u1ef2|\u1ef4|\u1ef6|\u1ef8)/g, 'Y');
 	  result = result.replace(/(\u00fd|\u1ef3|\u1ef5|\u1ef7|\u1ef9)/g, 'y');
-	  result = result.replace(" ","-")
+	  result = result.replace(/ /g,"-");
 	  
 	  result = result.toLowerCase();
 	  return result;
@@ -34,6 +51,13 @@ function show(id,string,typeEvent,title){
     }else if(title === 'Confirm'){
     	document.getElementById("btnExe").style.display = "inline-block";
     	document.getElementById("inputText").innerHTML = " <b> "+ id+" - "+string+ " </b> ";
+    	var type = typeEvent.split(" ");
+
+    	if(type[4] == 'cancel'){
+    		document.getElementById("btnExe").setAttribute("onclick","execute('"+type[4]+"');");
+    	}else {
+    		document.getElementById("btnExe").setAttribute("onclick","execute('"+type[6]+"');");
+    	}
     }
     document.getElementById("btnCancel").focus();
     document.getElementById("modal").style.display = "block";
@@ -66,6 +90,7 @@ function checkLength(paramName, max, min){
 		return true;
 	}else return false;
 }
+
 //
 var url = window.location.pathname;
 var idPage = url.split("/")[3];

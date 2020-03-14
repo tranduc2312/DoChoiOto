@@ -2,16 +2,6 @@ package com.ductran.dochoioto.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import com.ductran.dochoioto.entity.Categories;
-import com.ductran.dochoioto.entity.Comments;
-import com.ductran.dochoioto.entity.Images;
-import com.ductran.dochoioto.entity.OrderDetails;
 import com.ductran.dochoioto.entity.Products;
 
 public class ProductModel {
@@ -21,11 +11,21 @@ public class ProductModel {
 	private String productInfo;
 	private float productPrice;
 	private boolean productStatus;
-	private Categories category;
-	private List<Comments> listComments;
-	private List<Images> listImages;
-	private List<OrderDetails> listOrderDetails;
+	private CategoriesModel category;
+	private List<CommentModel> listComments;
+	private List<ImageModel> listImages;
+	private List<OrderDetailModel> listOrderDetails;
+	private String imageUrl;
 	
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public ProductModel() {}
 	
 	public ProductModel(Products product) {
@@ -35,6 +35,7 @@ public class ProductModel {
 		this.productInfo = product.getProductInfo();
 		this.productPrice = product.getProductPrice();
 		this.productStatus = product.isProductStatus();
+		this.category = new CategoriesModel(product.getCategory());
 	}
 	
 	public ProductModel(String productId, String productCode, String productName, String productInfo,
@@ -83,28 +84,28 @@ public class ProductModel {
 	public void setProductStatus(boolean productStatus) {
 		this.productStatus = productStatus;
 	}
-	public Categories getCategory() {
+	public CategoriesModel getCategory() {
 		return category;
 	}
-	public void setCategory(Categories category) {
+	public void setCategory(CategoriesModel category) {
 		this.category = category;
 	}
-	public List<Comments> getListComments() {
+	public List<CommentModel> getListComments() {
 		return listComments;
 	}
-	public void setListComments(List<Comments> listComments) {
+	public void setListComments(List<CommentModel> listComments) {
 		this.listComments = listComments;
 	}
-	public List<Images> getListImages() {
+	public List<ImageModel> getListImages() {
 		return listImages;
 	}
-	public void setListImages(List<Images> listImages) {
+	public void setListImages(List<ImageModel> listImages) {
 		this.listImages = listImages;
 	}
-	public List<OrderDetails> getListOrderDetails() {
+	public List<OrderDetailModel> getListOrderDetails() {
 		return listOrderDetails;
 	}
-	public void setListOrderDetails(List<OrderDetails> listOrderDetails) {
+	public void setListOrderDetails(List<OrderDetailModel> listOrderDetails) {
 		this.listOrderDetails = listOrderDetails;
 	}
 	

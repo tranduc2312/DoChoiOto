@@ -27,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository{
 	}
 
 	@Override
-	public List<Users> findById(String id) {
+	public List<Users> findById(String id, int limit) {
 		return null;
 	}
 

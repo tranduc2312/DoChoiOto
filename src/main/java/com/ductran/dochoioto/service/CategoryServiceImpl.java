@@ -28,7 +28,7 @@ public class CategoryServiceImpl extends GenericService implements CategoryServi
 	}
 
 	@Override
-	public List<CategoriesModel> findById(String id) {
+	public List<CategoriesModel> findById(String id, int limit) {
 		// TODO Auto-generated method stub
 		return null;
 	}

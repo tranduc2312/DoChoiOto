@@ -1,11 +1,8 @@
 package com.ductran.dochoioto.controller.admin;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +26,6 @@ public class CategoryController {
 	@GetMapping("/categories")
 	public String getPageList(Model model) {
 		model.addAttribute("listCategory", categoryService.findAll());
-		List<CategoriesModel> list = categoryService.findAll();
-		for (CategoriesModel categoriesModel : list) {
-			System.out.println(categoriesModel.getCategoryName()+"\t"+categoriesModel.getCategoryCode());
-		}
 		return LIST_CATE_PAGE;
 	}
 	@GetMapping(value = "/categories",params = "op=add")
@@ -53,6 +46,7 @@ public class CategoryController {
 	@GetMapping(value = "/categories",params = "op=edit")
 	public String getPageEdit(Model model, @RequestParam("id") String id) {
 		model.addAttribute("category", categoryService.findOneById(id));
+		model.addAttribute("listCategory", categoryService.findAll());
 		return EDIT_CATE_PAGE;
 	}
 	@PostMapping(value = "/editCategory")

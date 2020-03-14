@@ -107,7 +107,7 @@
 											<td><c:out value="${list.password }"/></td>
 											<td><c:out value="${list.userStatus }"/></td>
 											<td><a href="#"><c:out value="${list.userRole }"/></a></td>
-											<td><a onclick="show('${list.userId }','${list.fullName }','Do you want to delete this?','Confirm')" href="#"><i class="fas fa-trash"></i></a></td>
+											<td><a onclick="show('${list.userId }','${list.fullName }','Do you want to delete this user?','Confirm')" href="#"><i class="fas fa-trash"></i></a></td>
                                         </tr>
                                      </c:forEach>  
                                     </tbody>

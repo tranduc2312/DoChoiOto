@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.ductran.dochoioto.model.CommentModel;
 
 @Entity
 @Table(name = "comments")
@@ -32,6 +33,15 @@ public class Comments {
 	private Products product;
 	
 	public Comments() {}
+	public Comments(CommentModel cmt) {
+		this.cmtId = cmt.getCmtId();
+		this.cmtContent = cmt.getCmtContent();
+		this.cmtDate = cmt.getCmtDate();
+		this.cmtFullName = cmt.getCmtFullName();
+		this.cmtPhone = cmt.getCmtPhone();
+		this.cmtStatus = cmt.isCmtStatus();
+		this.product = new Products(cmt.getProduct());
+	}
 	public Comments(String cmtId, String cmtContent, Timestamp cmtDate, String cmtFullName, String cmtPhone,
 			boolean cmtStatus) {
 		super();
